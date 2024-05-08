@@ -13,13 +13,13 @@ def home():
 @app.route('/predict', methods=['POST', 'GET'])
 def predict():
     if request.method == 'POST':
-        Open = request.form.get('Open')
-        High = request.form.get('High') 
-        Low = request.form.get('Low')
-        Volume = request.form.get('Volume')
-        Adjclose = request.form.get('Adjclose')
+        CropDays = request.form.get('CropDays')
+        SoilMoisture = request.form.get('SoilMoisture') 
+        temperature = request.form.get('temperature')
+        Humidity = request.form.get('Humidity')
+        
     
-    prediction = utils.preprocess(Open, High, Low, Volume, Adjclose)
+    prediction = utils.preprocess(CropDays, SoilMoisture, temperature, Humidity)
     
     return render_template('prediction.html', prediction=prediction)    
 
